@@ -1,0 +1,20 @@
+/*Nixie One*/
+@font-face {
+	font-family: NixieOne;
+   	src: url(../fonts/NixieOne.ttf);
+}
+/*College*/ 
+@font-face {
+   	font-family: collegeSemi;
+   	src: url(../fonts/colleges_0.ttf);
+}
+/*NEOTERIC*/
+@font-face {
+   	font-family: NEOTERIC;
+   	src: url(../fonts/NEOTERIC.ttf);
+}   
+/*BEBAS*/
+@font-face {
+    font-family: bebas;
+    src: url(../fonts/BebasNeue.otf);
+}

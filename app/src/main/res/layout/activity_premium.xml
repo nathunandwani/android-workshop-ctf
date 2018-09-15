@@ -20,4 +20,13 @@
         app:inputType="number"
         app:password="true" />
 
+    <TextView
+        android:id="@+id/txtResult"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="52dp"
+        android:textSize="15sp" />
+
 </RelativeLayout>
