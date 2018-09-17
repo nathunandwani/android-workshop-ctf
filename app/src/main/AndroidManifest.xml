@@ -20,7 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".PremiumActivity" />
-        <activity android:name=".AboutActivity"></activity>
+        <activity android:name=".AboutActivity" />
+        <activity android:name=".NewsActivity"></activity>
     </application>
 
 </manifest>

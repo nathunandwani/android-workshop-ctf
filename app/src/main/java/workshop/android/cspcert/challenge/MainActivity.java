@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(this, PremiumActivity.class));
                 break;
             case R.id.menu_News:
-                Toast.makeText(MainActivity.this, "News!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, NewsActivity.class));
                 break;
             case R.id.menu_About:
                 startActivity(new Intent(this, AboutActivity.class));
