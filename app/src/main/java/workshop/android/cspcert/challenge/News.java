@@ -5,14 +5,14 @@ public class News {
     private int id;
     private int premium;
     private int author_id;
-    private String contents;
+    private String content;
     private String timestamp;
 
-    public News(int id, int premium, int author_id, String contents, String timestamp) {
+    public News(int id, int premium, int author_id, String content, String timestamp) {
         this.id = id;
         this.premium = premium;
         this.author_id = author_id;
-        this.contents = contents;
+        this.content = content;
         this.timestamp = timestamp;
     }
 
@@ -40,12 +40,12 @@ public class News {
         this.author_id = author_id;
     }
 
-    public String getContents() {
-        return contents;
+    public String getContent() {
+        return content;
     }
 
-    public void setContents(String contents) {
-        this.contents = contents;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public String getTimestamp() {
