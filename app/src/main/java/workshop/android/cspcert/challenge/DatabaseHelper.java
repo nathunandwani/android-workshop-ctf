@@ -51,6 +51,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return ret;
     }
 
+
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(tblAuthors);
