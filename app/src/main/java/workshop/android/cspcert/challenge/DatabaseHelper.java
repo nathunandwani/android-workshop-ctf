@@ -69,6 +69,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return news;
     }
 
+    public Author getAuthor(long id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(tbl_authors, new String[] {"id", "username", "timestamp"}, "id=?", new String[] {String.valueOf(id)}, null, null, null, null);
+        Author author = null;
+        if (cursor != null) {
+            cursor.moveToFirst();
+            author = new Author(cursor.getInt(cursor.getColumnIndex("id")),
+                    cursor.getString(cursor.getColumnIndex("username")),
+                    cursor.getString(cursor.getColumnIndex("timestamp"))
+            );
+        }
+        cursor.close();
+        return author;
+    }
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(tblAuthors);
