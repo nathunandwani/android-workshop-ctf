@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setActivityBackgroundColor(0);
         SaveData();
         ImageActions();
+        DBGenerate();
     }
 
     public void setActivityBackgroundColor(int color) {
@@ -83,5 +84,10 @@ public class MainActivity extends AppCompatActivity {
         dictionary.put("SecretW", "327a6c4304ad5938eaf0efb6cc3e53dc");
         dictionary.put("M1", "Hello? Is that even the correct format?");
         DataHelper.SaveData(MainActivity.this, "challenges", dictionary, false);
+    }
+
+    public void DBGenerate() {
+        DatabaseHelper db = new DatabaseHelper(this);
+        db.InsertAuthor("coco");
     }
 }
