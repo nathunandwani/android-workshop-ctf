@@ -3,13 +3,15 @@ package workshop.android.cspcert.challenge;
 public class News {
 
     private int id;
+    private String title;
     private int premium;
     private int author_id;
     private String content;
     private String timestamp;
 
-    public News(int id, int premium, int author_id, String content, String timestamp) {
+    public News(int id, String title, int premium, int author_id, String content, String timestamp) {
         this.id = id;
+        this.title = title;
         this.premium = premium;
         this.author_id = author_id;
         this.content = content;
@@ -22,6 +24,14 @@ public class News {
 
     public void setID(int id) {
         this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public int getPremium() {

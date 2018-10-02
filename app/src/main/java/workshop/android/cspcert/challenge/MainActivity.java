@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
                     in.close();
                     return sb.toString();
                 } else {
-                    return "false : "+responseCode;
+                    return "";
                 }
             }
             catch(Exception e){
@@ -129,7 +129,8 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
-            Log.i("stats", "Entered DB Generate");
+            if (result == "")
+                return;
             DatabaseHelper db = new DatabaseHelper(MainActivity.this);
             String[] splitter = result.split("\\|");
             for (int i = 0; i < splitter.length; i++) {
