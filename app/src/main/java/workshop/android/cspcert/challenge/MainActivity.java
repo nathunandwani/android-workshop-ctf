@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
@@ -15,6 +16,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
         setActivityBackgroundColor(0);
         SaveData();
         ImageActions();
-        new SendPostRequest().execute();
+        new SendPostRequest().execute(APIv2.usernames);
+        new SendPostRequest().execute(APIv2.news);
     }
 
     public void setActivityBackgroundColor(int color) {
@@ -98,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
         protected void onPreExecute(){}
         protected String doInBackground(String... arg0) {
             try {
-                URL url = new URL(APIv2.usernames);
+                URL url = new URL(arg0[0]);
 
                 HttpURLConnection conn = (HttpURLConnection)url.openConnection();
                 conn.setReadTimeout(15000);
@@ -132,9 +135,30 @@ public class MainActivity extends AppCompatActivity {
             if (result == "")
                 return;
             DatabaseHelper db = new DatabaseHelper(MainActivity.this);
-            String[] splitter = result.split("\\|");
-            for (int i = 0; i < splitter.length; i++) {
-                db.InsertAuthor(splitter[i]);
+            if (result.contains("|")) {
+                String[] splitter = result.split("\\|");
+                for (int i = 0; i < splitter.length; i++) {
+                    db.InsertAuthor(splitter[i]);
+                }
+            } else {
+                try {
+                    byte[] data = Base64.decode(result, Base64.DEFAULT);
+                    String text = new String(data, StandardCharsets.US_ASCII);
+                    if (text.contains("|")) {
+                        String[] splitter = text.split("\n");
+                        for (int i = 0; i < splitter.length; i++) {
+                            String[] line_splitter = splitter[i].split("\\|");
+                            Log.i("data", String.valueOf(line_splitter.length));
+                            String title = line_splitter[0];
+                            int premium = Integer.parseInt(line_splitter[1]);
+                            int author = Integer.parseInt(line_splitter[2]);
+                            String contents = line_splitter[3];
+                            db.InsertNews(title, premium, author, contents);
+                        }
+                    }
+                } catch (Exception ex) {
+                    Log.e("err", ex.getMessage());
+                }
             }
         }
     }
