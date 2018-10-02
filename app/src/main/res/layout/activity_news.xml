@@ -6,4 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".NewsActivity">
 
+    <TextView
+        android:id="@+id/txtTitle"
+        android:layout_width="221dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text=""
+        android:textColor="@android:color/black"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/txtContents"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="50dp"
+        android:layout_marginTop="50dp"
+        android:text=""
+        android:scrollbars = "vertical"
+        android:textColor="@android:color/black" />
+
 </RelativeLayout>
