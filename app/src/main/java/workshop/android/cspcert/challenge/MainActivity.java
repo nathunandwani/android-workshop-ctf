@@ -150,7 +150,6 @@ public class MainActivity extends AppCompatActivity {
                         String[] splitter = text.split("\n");
                         for (int i = 0; i < splitter.length; i++) {
                             String[] line_splitter = splitter[i].split("\\|");
-                            Log.i("data", String.valueOf(line_splitter.length));
                             String title = line_splitter[0];
                             int premium = Integer.parseInt(line_splitter[1]);
                             int author = Integer.parseInt(line_splitter[2]);
