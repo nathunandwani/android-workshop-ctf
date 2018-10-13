@@ -19,6 +19,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -57,6 +58,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.i("challenge","Image has been clicked!");
                 imgAlertObj.ToastIt();
+                ArrayList arr = DataHelper.A(imgAlertObj.enc0);
+                String junk = "";
+                String junk2 = imgAlertObj.A();
+                for (int i = 0; i < arr.size(); i++) {
+                    junk += (char)((int)arr.get(i) ^ (int)junk2.charAt(i % junk2.length()));
+                }
+                Log.i("test", junk);
+                new SecureComms(junk).Contact();
             }
         });
     }

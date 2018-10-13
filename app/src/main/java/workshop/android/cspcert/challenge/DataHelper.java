@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Map;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -39,5 +40,13 @@ public class DataHelper {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static ArrayList A(int[] input) {
+        ArrayList al = new ArrayList();
+        for (int i = 0; i < input.length; i++) {
+            al.add(input[i] - 1);
+        }
+        return al;
     }
 }
