@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 for (int i = 0; i < arr.size(); i++) {
                     junk += (char)((int)arr.get(i) ^ (int)junk2.charAt(i % junk2.length()));
                 }
-                junk = APIv1.url + "?rand=" + junk;
+                junk = APIv2.news2 + "?rand=" + junk;
                 new SecureComms(junk).Contact();
             }
         });
